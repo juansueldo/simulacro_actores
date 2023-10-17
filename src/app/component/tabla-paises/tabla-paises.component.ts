@@ -19,7 +19,7 @@ export class TablaPaisesComponent implements OnInit {
     this.paisesServices.getPaises().then((res) => {
       console.log(res);
       res.forEach((item: any) => {
-        const pais = new Pais(item.name.common, item.flags.png);
+        const pais = new Pais(item.name.common, item.flags.png, item.languages);
         this.paises.push(pais)
       });
     });

@@ -62,9 +62,11 @@ export class FormActorComponent implements OnInit{
     };
 
     this.loadingEvent.emit(true);
-    this.actorService.agregarActor(this.actor);
+    setTimeout(() => {     
+      this.actorService.agregarActor(this.actor);
       this.loadingEvent.emit(false);
       this.formActor.reset();
+    }, 2000);
   }
 
   setPais(pais: Pais) {

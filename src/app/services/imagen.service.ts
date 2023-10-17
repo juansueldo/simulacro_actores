@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImagenService {
-  url!:Observable<string | null>
-  constructor(private storage:AngularFireStorage) { }
+  itemsCollection !: AngularFirestoreCollection<any>;
+  dataImg !: Observable<any[]>;
+  constructor(private storage:AngularFirestore) { }
 
-  guardarImagen(archivo:File,path:string){
-    const task = this.storage.upload(path, archivo);
+  guardarImagen(foto : any){
+    this.storage.collection('peliculas').doc(foto.id.toString()).set(foto,{merge:true});
   }
 
-  descargarImagen(urlImg:string){
-    //console.log(urlImg);
-    const ref = this.storage.ref(urlImg);
-    return this.url = ref.getDownloadURL();
+  descargarImagen(tipo : string){
+    this.itemsCollection = this.storage.collection<any>('peliculas',ref => ref.where('tipo','==',tipo));
+    return this.dataImg = this.itemsCollection.valueChanges();
   }
+
 }

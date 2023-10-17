@@ -24,7 +24,8 @@ export class FormPeliculaComponent {
   @Input() selectedActor!: Actor;
   @Output() loadingEvent = new EventEmitter<boolean>();
 
-  constructor(private peliculaService : PeliculaService){
+
+  constructor(private peliculaService : PeliculaService, private imagenService : ImagenService){
     this.formPelicula = new FormGroup({
       nombre: new FormControl(null, {
         validators: [FormValidator.onlyLetters],
@@ -35,11 +36,11 @@ export class FormPeliculaComponent {
         updateOn: 'change',
       }),
       fechaDeEstreno: new FormControl(null, {
-        validators: [FormValidator.onlyLetters],
+        validators: [FormValidator.validDate],
         updateOn: 'change',
       }),
-      cantidadDePublico: new FormControl(null, {
-        validators: [FormValidator.onlyNumbers],
+      cantidadDePublico: new FormControl(10000, {
+        validators: [FormValidator.onlyNumbers, Validators.min(10000)],
         updateOn: 'change',
       }),
       fotoDePelicula: new FormControl(null, {
@@ -65,11 +66,11 @@ export class FormPeliculaComponent {
 
     this.loadingEvent.emit(true);
     this.peliculaService.agregarPelicula(this.pelicula);
-    //this.imagenService.guardarImagen(this.imagen,this.pathImg);
+    this.imagenService.guardarImagen(this.imagen);
       this.loadingEvent.emit(false);
       this.formPelicula.reset();
   }
-  guardarImagen(event:any) {    
+  async guardarImagen(event:any) {    
     
     const file: File = event.target.files[0];
     this.imagen = file;
@@ -87,7 +88,8 @@ export class FormPeliculaComponent {
     });
   }
   setActor(actor: Actor) {
-    this.actor.setValue(actor.nombre, actor.apellido);
+    const nombreCompleto = actor.nombre +' '+ actor.apellido;
+    this.actor.setValue(nombreCompleto);
   }
   get nombre() {
     return this.formPelicula.controls['nombre'];
