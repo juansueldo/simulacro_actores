@@ -11,11 +11,12 @@ export class ImagenService {
   constructor(private storage:AngularFirestore) { }
 
   guardarImagen(foto : any){
-    this.storage.collection('peliculas').doc(foto.id.toString()).set(foto,{merge:true});
+    const nombreImagen = `${new Date().getTime()}`;
+    this.storage.collection('peliculas').doc(nombreImagen).set(foto);
   }
 
   descargarImagen(tipo : string){
-    this.itemsCollection = this.storage.collection<any>('peliculas',ref => ref.where('tipo','==',tipo));
+    this.itemsCollection = this.storage.collection<any>('peliculas',ref => ref);
     return this.dataImg = this.itemsCollection.valueChanges();
   }
 

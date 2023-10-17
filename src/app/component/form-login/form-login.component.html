@@ -1,0 +1,17 @@
+<form (submit)="onSubmit()" [formGroup]="formLogin">
+
+  
+    <app-form-input class="form-control {{email.errors ? 'is-invalid': ''}}" divClass="mb-3" label="Nombre"
+      controlName="nombre" type="text">
+      <small class="invalid-feedback">Nombre invalido (solo letras)</small>
+    </app-form-input>
+
+    <app-form-input class="form-control {{clave.errors ? 'is-invalid': ''}}" divClass="mb-3" label="Apellido"
+    controlName="apellido" type="text">
+    <small class="invalid-feedback">Apellido invalido (solo letras)</small>
+  </app-form-input>
+  
+    
+  
+    <button type="submit" class="btn btn-primary mt-2">Enviar</button>
+  </form>

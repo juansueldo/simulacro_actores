@@ -22,6 +22,7 @@ import { LoginComponent } from './page/login/login.component';
 import { AltaPeliculaComponent } from './page/alta-pelicula/alta-pelicula.component';
 import { TablaActorComponent } from './component/tabla-actor/tabla-actor.component';
 import { FormPeliculaComponent } from './component/form-pelicula/form-pelicula.component';
+import { FormLoginComponent } from './component/form-login/form-login.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { FormPeliculaComponent } from './component/form-pelicula/form-pelicula.c
         AltaPeliculaComponent,
         TablaActorComponent,
         FormPeliculaComponent,
+        FormLoginComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],

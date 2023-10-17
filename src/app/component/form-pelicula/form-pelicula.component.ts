@@ -51,11 +51,13 @@ export class FormPeliculaComponent {
     });
   }
   onSubmit() {
-    this.validateEmptyInputs();
-    if (this.formPelicula.invalid) return;
+    //this.validateEmptyInputs();
+    /*if (this.formPelicula.invalid) {
+      console.log(this.actor.value);
+      return;}*/
 
    this.pelicula = {
-     id: Math.floor(Math.random() * 10000000),
+      id: Math.floor(Math.random() * 10000000),
       nombre: this.nombre.value,
       tipo: this.tipo.value,
       fechaDeEstreno: this.fechaDeEstreno.value,
@@ -63,14 +65,13 @@ export class FormPeliculaComponent {
       fotoDePelicula:this.fotoDePelicula.value,
       actor:this.actor.value,
     };
-
     this.loadingEvent.emit(true);
     this.peliculaService.agregarPelicula(this.pelicula);
     this.imagenService.guardarImagen(this.imagen);
       this.loadingEvent.emit(false);
       this.formPelicula.reset();
   }
-  async guardarImagen(event:any) {    
+  guardarImagen(event:any) {    
     
     const file: File = event.target.files[0];
     this.imagen = file;
