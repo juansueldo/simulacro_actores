@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 import { Actor } from '../models/actor';
 import { Observable } from 'rxjs';
-import { Pais } from '../models/pais';
+
 @Injectable({
   providedIn: 'root'
 })

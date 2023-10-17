@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { Actor } from '../models/actor';
+import { Pelicula } from '../models/pelicula';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class Pelicula {
+export class PeliculaService {
   
   constructor(private db: AngularFirestore) { }
 
-  agregarActor(actor:Actor){
-    this.db.collection('actores').add(actor);
+  agregarPelicula(pelicula:Pelicula){
+    this.db.collection('peliculas').add(pelicula);
 
   }
-  loadActores(): Observable<Actor[]> {
-    return this.db.collection<Actor>('actores').valueChanges();
+  loadPeliculas(): Observable<Pelicula[]> {
+    return this.db.collection<Pelicula>('peliculas').valueChanges();
   }
 }

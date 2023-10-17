@@ -6,14 +6,28 @@
       <small class="invalid-feedback">Nombre invalido (solo letras)</small>
     </app-form-input>
 
-    <app-form-input class="form-control {{genero.errors ? 'is-invalid': ''}}" divClass="mb-3" label="Genero"
-    controlName="genero" type="text">
-    <small class="invalid-feedback">Genero invalido (solo letras)</small>
+    <app-form-input class="form-control {{tipo.errors ? 'is-invalid': ''}}" divClass="mb-3" label="Tipo"
+    controlName="tipo" type="text">
+    <small class="invalid-feedback">Tipo invalido (solo letras)</small>
   </app-form-input>
-  
+
+  <app-form-input class="form-control {{fechaDeEstreno.errors ? 'is-invalid': ''}}" divClass="mb-3" label="fechaDeEstreno"
+    controlName="fechaDeEstreno" type="text">
+    <small class="invalid-feedback">fechaDeEstreno invalido (solo letras)</small>
+  </app-form-input>
+
+  <app-form-input class="form-control {{cantidadDePublico.errors ? 'is-invalid': ''}}" divClass="mb-3" label="cantidadDePublico"
+  controlName="cantidadDePublico" type="text">
+  <small class="invalid-feedback">cantidadDePublico invalido (solo numeros)</small>
+</app-form-input>
+
+<app-form-input class="form-control" divClass="mb-3" label="fotoDePelicula"
+  controlName="fotoDePelicula" type="file">
+</app-form-input>
+
   <app-form-input class="form-control {{actor.errors ? 'is-invalid': ''}}" divClass="mb-3"
   label="Actor" controlName="actor" type="text" [readOnly]="true">
-  <small class="invalid-feedback">Pais invalido</small>
+  <small class="invalid-feedback">Actor invalido</small>
 </app-form-input>
     
   
