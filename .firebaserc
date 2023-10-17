@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "simulacro-actores": {
+      "hosting": {
+        "simulacro_actores": [
+          "simulacro-actores"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "simulacro-actores"
+  }
+}

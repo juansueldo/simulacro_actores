@@ -1,0 +1,21 @@
+<form (submit)="onSubmit()" [formGroup]="formPelicula">
+
+  
+    <app-form-input class="form-control {{nombre.errors ? 'is-invalid': ''}}" divClass="mb-3" label="Nombre"
+      controlName="nombre" type="text">
+      <small class="invalid-feedback">Nombre invalido (solo letras)</small>
+    </app-form-input>
+
+    <app-form-input class="form-control {{genero.errors ? 'is-invalid': ''}}" divClass="mb-3" label="Genero"
+    controlName="genero" type="text">
+    <small class="invalid-feedback">Genero invalido (solo letras)</small>
+  </app-form-input>
+  
+  <app-form-input class="form-control {{actor.errors ? 'is-invalid': ''}}" divClass="mb-3"
+  label="Actor" controlName="actor" type="text" [readOnly]="true">
+  <small class="invalid-feedback">Pais invalido</small>
+</app-form-input>
+    
+  
+    <button type="submit" class="btn btn-primary mt-2">Enviar</button>
+  </form>
